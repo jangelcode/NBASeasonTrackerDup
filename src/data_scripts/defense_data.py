@@ -1,50 +1,23 @@
+from nba_api.stats.endpoints import playercareerstats
 import pandas as pd
+import psycopg2
 from sqlalchemy import create_engine
 
-# ... (other imports)
+# Career stats for Nikola Jokic
+career = playercareerstats.PlayerCareerStats(player_id='203999') 
 
-class LeagueDashPtStats:
-    # ... (existing code)
+data_frame = career.get_data_frames()[0]
 
-    def get_request(self):
-        self.nba_response = NBAStatsHTTP().send_api_request(
-            endpoint=self.endpoint,
-            parameters=self.parameters,
-            proxy=self.proxy,
-            headers=self.headers,
-            timeout=self.timeout,
-        )
-        return self.nba_response.get_data_frames()
-
-# ... (rest of the class)
-
-def insert_data_into_postgres(data_frame, table_name, engine):
-    data_frame.to_sql(table_name, engine, if_exists='replace', index=False)
-
-# Modify the parameters according to your needs
-api_params = {
-    'Season': '2019-20',
-    'PerMode': 'Totals',
-    'PlayerOrTeam': 'Team',
-    'PtMeasureType': 'SpeedDistance',
+db_params = {
+    'host': 'localhost',
+    'port': '5432',
+    'user': 'postgres',
+    'password': 'postgres',
+    'database': 'defense',
 }
 
-# Instantiate LeagueDashPtStats with the API parameters
-api_data = LeagueDashPtStats(**api_params)
+engine = create_engine(f'postgresql+psycopg2://{db_params["user"]}:{db_params["password"]}@{db_params["host"]}:{db_params["port"]}/{db_params["database"]}')
 
-# Get the response data frames
-response_data_frames = api_data.get_request()
+data_frame.to_sql('player_career_stats', engine, if_exists='replace', index=False)
 
-# Connect to the PostgreSQL database (modify the connection string accordingly)
-# Make sure to replace 'user', 'password', 'host', and 'port' with your actual PostgreSQL credentials
-engine = create_engine('postgresql://postgres:postgres@localhost:5432/defense')
-
-# Define the table name
-table_name = 'nba_stats_table'
-
-# Insert data into the PostgreSQL database
-for key, value in response_data_frames.items():
-    insert_data_into_postgres(value, f"{table_name}_{key}", engine)
-
-
-
+engine.dispose()
