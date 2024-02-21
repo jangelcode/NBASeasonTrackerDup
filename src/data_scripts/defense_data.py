@@ -18,6 +18,6 @@ db_params = {
 
 engine = create_engine(f'postgresql://{db_params["user"]}:{db_params["password"]}@{db_params["host"]}:{db_params["port"]}/{db_params["database"]}')
 
-data_frame.to_sql('player_career_stats', engine, if_exists='replace', index=False)
+data_frame.to_sql('player_career_stats', engine, if_exists='append', index=False)
 
 engine.dispose()
