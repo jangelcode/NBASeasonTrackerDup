@@ -1,6 +1,7 @@
 import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.dialects import postgresql  # Import the PostgreSQL dialect
 import pandas as pd
 
 app = Flask(__name__)
