@@ -14,7 +14,7 @@ engine = create_engine(db_url, pool_size=3, max_overflow=0)
 @app.route("/")
 def main():
     # Fetch data from the database
-    query = "SELECT * FROM player_career_stats;"
+    query = "\c defense; SELECT * FROM player_career_stats;"
     data_frame = pd.read_sql_query(query, engine)
 
     # Render the data in an HTML table
