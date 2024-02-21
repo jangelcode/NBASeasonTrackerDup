@@ -1,6 +1,6 @@
 import os
 from flask import Flask
-from sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 import pandas as pd
 
 app = Flask(__name__)
