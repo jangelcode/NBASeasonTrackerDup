@@ -5,8 +5,10 @@ import pandas as pd
 
 app = Flask(__name__)
 
+# app.config['Database_URL'] = "postgresql://postgres:postgres@localhost:5432/defense"
+
 # Use the DATABASE_URL environment variable provided by Heroku
-db_url = os.environ.get('DATABASE_URL')
+db_url = "postgresql://postgres:postgres@localhost:5432/defense"
 
 # Create a connection to PostgreSQL
 engine = create_engine(db_url, pool_size=3, max_overflow=0)
