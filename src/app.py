@@ -1,20 +1,15 @@
+import os
 from flask import Flask, render_template
 from sqlalchemy import create_engine
 import pandas as pd
 
 app = Flask(__name__)
 
-# PostgreSQL connection parameters
-db_params = {
-    'host': 'localhost',
-    'port': '5432',
-    'user': 'postgres',
-    'password': 'postgres',
-    'database': 'defense',
-}
+# Use the DATABASE_URL environment variable provided by Heroku
+db_url = os.environ.get('DATABASE_URL')
 
 # Create a connection to PostgreSQL
-engine = create_engine(f'postgresql+psycopg2://{db_params["user"]}:{db_params["password"]}@{db_params["host"]}:{db_params["port"]}/{db_params["database"]}')
+engine = create_engine(db_url)
 
 @app.route("/")
 def main():
