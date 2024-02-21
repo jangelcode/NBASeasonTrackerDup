@@ -1,23 +1,21 @@
 import os
-from flask import Flask, render_template
-from sqlalchemy import create_engine
+from flask import Flask
+from sqlalchemy import SQLAlchemy
 import pandas as pd
 
 app = Flask(__name__)
 
-# app.config['Database_URL'] = "postgresql://postgres:postgres@localhost:5432/defense"
-
 # Use the DATABASE_URL environment variable provided by Heroku
-db_url = "postgresql://postgres:postgres@localhost:5432/defense"
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Recommended to suppress a warning
 
-# Create a connection to PostgreSQL
-engine = create_engine(db_url, pool_size=3, max_overflow=0)
+db = SQLAlchemy(app)
 
 @app.route("/")
 def main():
     # Fetch data from the database
     query = "SELECT * FROM player_career_stats;"
-    data_frame = pd.read_sql_query(query, engine)
+    data_frame = pd.read_sql_query(query, db.engine)
 
     # Render the data in an HTML table
     table_html = data_frame.to_html(classes='table table-striped', index=False)
