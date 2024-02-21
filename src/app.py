@@ -9,7 +9,7 @@ app = Flask(__name__)
 db_url = os.environ.get('DATABASE_URL')
 
 # Create a connection to PostgreSQL
-engine = create_engine(db_url)
+engine = create_engine(db_url, pool_size=3, max_overflow=0)
 
 @app.route("/")
 def main():
