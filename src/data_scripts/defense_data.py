@@ -1,6 +1,4 @@
 from nba_api.stats.endpoints import playercareerstats
-import pandas as pd
-import psycopg2
 from sqlalchemy import create_engine
 
 # Career stats for Nikola Jokic
