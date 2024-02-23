@@ -51,6 +51,8 @@ def fill_database():
             all_data.loc[team_id-132] = row_data
         else:
             all_data = pd.DataFrame([row_data])
+        
+        print(team_info['name'])
 
     engine = create_engine(database_url)
     all_data.to_sql('teams', con=engine, index=False, if_exists='replace')

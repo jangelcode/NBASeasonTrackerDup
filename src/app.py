@@ -11,15 +11,15 @@ engine = create_engine(database_url)
 
 @app.route("/")
 def main():
-    query = "SELECT * FROM teams;"
+    query = 'SELECT * FROM teams ORDER BY "Wins" DESC;'
     df = pd.read_sql(query, con=engine)
 
-    table_html = df.to_html(classes='table table-striped', index=False)
+    table_html = df.to_html(classes='table table-striped', index=False, justify='left')
 
     return f'''
         <html>
             <head>
-                <h1>NBA Team Stats</h1>
+                <h1>NBA Team Rankings</h1>
             </head>
             <body>
                 {table_html}
