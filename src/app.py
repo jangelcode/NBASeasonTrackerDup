@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask
 import requests
 import pandas as pd
 
@@ -20,13 +20,19 @@ def main():
         # Parse the JSON response
         data = response.json()
 
-        # Extract relevant information from the API response and create a Pandas DataFrame
-        # Adjust the code based on the actual structure of the API response
-        # For example, if the data is nested under a specific key, use data['key']
-        df = pd.DataFrame(data['response'])
+        # Extract relevant information from the API response
+        team_data = data.get('response', {}).get('team', {})
+        player_stats = team_data.get('players', [])
+
+        # Create a DataFrame from the player_stats list
+        df = pd.DataFrame(player_stats)
+
+        # Select specific columns for display
+        columns_to_display = ['country', 'league', 'team', 'games', 'points']
+        df_display = df[columns_to_display]
 
         # Create HTML table for data
-        table_html = df.to_html(classes='table table-striped', index=False)
+        table_html = df_display.to_html(classes='table table-striped', index=False)
 
         # Render HTML directly within the Python code
         return f'''
