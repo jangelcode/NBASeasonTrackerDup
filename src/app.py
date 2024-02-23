@@ -27,12 +27,8 @@ def main():
         # Create a DataFrame from the player_stats list
         df = pd.DataFrame(player_stats)
 
-        # Select specific columns for display
-        columns_to_display = ['country', 'league', 'team', 'games', 'points']
-        df_display = df[columns_to_display]
-
         # Create HTML table for data
-        table_html = df_display.to_html(classes='table table-striped', index=False)
+        table_html = df.to_html(classes='table table-striped', index=False)
 
         # Render HTML directly within the Python code
         return f'''
