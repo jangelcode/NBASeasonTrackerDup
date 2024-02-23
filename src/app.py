@@ -22,10 +22,11 @@ def main():
 
         # Extract relevant information from the API response
         team_data = data.get('response', {}).get('team', {})
-        player_stats = team_data.get('players', [])
+        player_stats = team_data
 
         # Create a DataFrame from the player_stats list
         df = pd.DataFrame(player_stats)
+        print(df)
 
         # Create HTML table for data
         table_html = df.to_html(classes='table table-striped', index=False)
