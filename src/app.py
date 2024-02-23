@@ -28,12 +28,23 @@ def main():
         # Create HTML table for data
         table_html = df.to_html(classes='table table-striped', index=False)
 
-        return render_template('index.html', table_html=table_html)
-
+        # Render HTML directly within the Python code
+        return f'''
+        <html>
+            <head>
+                <title>NBA Player Career Stats for Nikola Jokic</title>
+            </head>
+            <body>
+                <h1>NBA Player Career Stats for Nikola Jokic</h1>
+                {table_html}
+            </body>
+        </html>
+        '''
     else:
         # Handle the case where the API request was not successful
         return f"Error: {response.status_code} - {response.text}"
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
