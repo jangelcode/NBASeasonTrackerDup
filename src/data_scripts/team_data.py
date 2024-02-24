@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 def fill_database():
     database_url = "postgresql://pcvqvgmijraryx:26c43ba15b78faf8bbf3b162d8f743b9ec3d741cabd07856f210bd7b0fc82dd8@ec2-34-230-120-83.compute-1.amazonaws.com:5432/d2m4f9jdj48v0e"
 
-    url = "https://api-basketball.p.rapidapi.com/statistics"
+    url = "https://api-basketball.p.rapidapi.com/standings"
 
     headers = {
         "X-RapidAPI-Key": "02d9b0d232msh33e360bbdbbf28cp14fc09jsn2aaba1786409",
@@ -22,28 +22,31 @@ def fill_database():
         data = response.json()
 
         #extract data from response categories
-        team_info = data['response']['team']
-        games_info = data['response']['games']
-        points_info = data['response']['points']
+        team_info = data['response'][0][0]['team']
+        games_info = data['response'][0][0]['games']
+        points_info = data['response'][0][0]['points']
         
         #create dictionary
         row_data = {
             'Team': team_info['name'],
-            'Games Played (H)': games_info['played']['home'],
-            'Games Played (A)': games_info['played']['away'],
-            'Games Played': games_info['played']['all'],
-            'Wins (H)': games_info['wins']['home']['total'],
-            'Wins (A)': games_info['wins']['away']['total'],
-            'Wins': games_info['wins']['all']['total'],
-            'Loses (H)': games_info['loses']['home']['total'],
-            'Loses (A)': games_info['loses']['away']['total'],
-            'Loses': games_info['loses']['all']['total'],
-            'Points (H)': points_info['for']['total']['home'],
-            'Points (A)': points_info['for']['total']['away'],
-            'Total Points': points_info['for']['total']['all'],
-            'Points by opp (H)': points_info['against']['total']['home'],
-            'Points by opp (A)': points_info['against']['total']['away'],
-            'Total points (opp)': points_info['against']['total']['all'],
+            # 'Games Played (H)': games_info['played']['home'],
+            # 'Games Played (A)': games_info['played']['away'],
+            # 'Games Played': games_info['played'],
+            # 'Wins (H)': games_info['wins']['home']['total'],
+            # 'Wins (A)': games_info['wins']['away']['total'],
+            'Wins': games_info['win']['total'],
+            # 'Loses (H)': games_info['loses']['home']['total'],
+            # 'Loses (A)': games_info['loses']['away']['total'],
+            'Loses': games_info['lose']['total'],
+            'Played': games_info['played'],
+            'Pct': games_info['win']['percentage'],
+            'Points Scored': points_info['for'],
+            'Points Allowed': points_info['against'],
+            'Point Differential': points_info['for'] - points_info['against'],
+            # 'Total Points': points_info['for']['total']['all'],
+            # 'Points by opp (H)': points_info['against']['total']['home'],
+            # 'Points by opp (A)': points_info['against']['total']['away'],
+            # 'Total points (opp)': points_info['against']['total']['all'],
         }
         
         #add to dataframe

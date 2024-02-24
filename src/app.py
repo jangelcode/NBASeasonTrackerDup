@@ -11,7 +11,7 @@ engine = create_engine(database_url)
 
 @app.route("/")
 def main():
-    query = 'SELECT * FROM teams ORDER BY "Wins" DESC;'
+    query = 'SELECT * FROM teams ORDER BY "Pct" DESC;'
     df = pd.read_sql(query, con=engine)
 
     table_html = df.to_html(classes='table table-striped', index=False, justify='left')
