@@ -30,6 +30,7 @@ def fill_database():
         #create dictionary
         row_data = {
             'Team': team_info['name'],
+            'Conf. Standings': data['response'][0][0]['position'],
             'Conference': conference_info['name'],
             'Wins': games_info['win']['total'],
             'Loses': games_info['lose']['total'],
