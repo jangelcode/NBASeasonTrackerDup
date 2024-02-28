@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make a Prediction</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-3">
+    <h2>Make a Prediction</h2>
+    <form action="/submit-prediction" method="post">
+        <div class="form-group">
+            <label for="point-differential">Point Differential (1-10):</label>
+            <input type="range" class="form-control-range" id="point-differential" name="point_differential" min="1" max="10">
+        </div>
+        <div class="form-group">
+            <label for="points-per-game">Points Per Game (1-10):</label>
+            <input type="range" class="form-control-range" id="points-per-game" name="points_per_game" min="1" max="10">
+        </div>
+        <div class="form-group">
+            <label for="points-allowed-per-game">Points Allowed Per Game (1-10):</label>
+            <input type="range" class="form-control-range" id="points-allowed-per-game" name="points_allowed_per_game" min="1" max="10">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
