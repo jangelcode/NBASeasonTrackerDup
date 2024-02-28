@@ -15,7 +15,7 @@ class TestFlaskApp(unittest.TestCase):
         #check status code is 200
         self.assertEqual(response.status_code, 200)
 
-        self.assertIn(b'<h1>NBA Team Stats</h1>', response.data)
+        self.assertIn(b'<h2>Home</h2>', response.data)
 
 if __name__ == '__main__':
     unittest.main()
