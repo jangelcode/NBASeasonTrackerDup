@@ -11,6 +11,7 @@ def fill_database():
         "X-RapidAPI-Host": "api-basketball.p.rapidapi.com"
     }
 
+
     #init data frame and apis team ids
     team_ids = range(132, 162)
     all_data = pd.DataFrame()
@@ -30,24 +31,14 @@ def fill_database():
         row_data = {
             'Team': team_info['name'],
             'Conference': conference_info['name'],
-            # 'Games Played (H)': games_info['played']['home'],
-            # 'Games Played (A)': games_info['played']['away'],
-            # 'Games Played': games_info['played'],
-            # 'Wins (H)': games_info['wins']['home']['total'],
-            # 'Wins (A)': games_info['wins']['away']['total'],
             'Wins': games_info['win']['total'],
-            # 'Loses (H)': games_info['loses']['home']['total'],
-            # 'Loses (A)': games_info['loses']['away']['total'],
             'Loses': games_info['lose']['total'],
             'Played': games_info['played'],
             'Pct': games_info['win']['percentage'],
             'Points Scored': points_info['for'],
             'Points Allowed': points_info['against'],
             'Point Differential': points_info['for'] - points_info['against'],
-            # 'Total Points': points_info['for']['total']['all'],
-            # 'Points by opp (H)': points_info['against']['total']['home'],
-            # 'Points by opp (A)': points_info['against']['total']['away'],
-            # 'Total points (opp)': points_info['against']['total']['all'],
+            'Points per Game': round(points_info['for'] / games_info['played'], 1),
         }
         
         #add to dataframe
