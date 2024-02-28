@@ -35,9 +35,12 @@
         <div class="form-group">
             <label for="points-allowed-per-game">Points Allowed Per Game (1-10): <span id="points-allowed-per-game-value"></span></label>
             <input type="range" class="form-control-range" id="points-allowed-per-game" name="points_allowed_per_game" min="1" max="10">
-        </div>        
+        </div>  
+        <div class="form-group d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>             
     </form>
-    <!-- Inside the <body> tag, after your existing form -->
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         function updateSliderValue(sliderId, displayId) {
