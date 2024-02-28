@@ -22,12 +22,14 @@ def fill_database():
 
         #extract data from response categories
         team_info = data['response'][0][0]['team']
+        conference_info = data['response'][0][0]['group']
         games_info = data['response'][0][0]['games']
         points_info = data['response'][0][0]['points']
         
         #create dictionary
         row_data = {
             'Team': team_info['name'],
+            'Conference': conference_info['name'],
             # 'Games Played (H)': games_info['played']['home'],
             # 'Games Played (A)': games_info['played']['away'],
             # 'Games Played': games_info['played'],

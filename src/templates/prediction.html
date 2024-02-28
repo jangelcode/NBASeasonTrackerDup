@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Make a Prediction</title>
+    <title>Simulate the Playoffs</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -16,7 +16,7 @@
                 <a class="nav-link" href="/rankings">Rankings</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="/make-a-prediction">Make a Prediction</a>
+                <a class="nav-link active" href="/Simulate-the-Playoffs">Simulate the Playoffs</a>
             </li>
         </ul>
     </div>
@@ -33,8 +33,8 @@
             <input type="range" class="form-control-range" id="points-per-game" name="points_per_game" min="1" max="10">
         </div>
         <div class="form-group">
-            <label for="points-allowed-per-game">Points Allowed Per Game (1-10): <span id="points-allowed-per-game-value"></span></label>
-            <input type="range" class="form-control-range" id="points-allowed-per-game" name="points_allowed_per_game" min="1" max="10">
+            <label for="win-percentage">Win Percentage (1-10): <span id="win-percentage-value"></span></label>
+            <input type="range" class="form-control-range" id="win-percentage" name="points_allowed_per_game" min="1" max="10">
         </div>  
         <div class="form-group d-flex justify-content-end">
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -55,7 +55,7 @@
 
         updateSliderValue('point-differential', 'point-differential-value');
         updateSliderValue('points-per-game', 'points-per-game-value');
-        updateSliderValue('points-allowed-per-game', 'points-allowed-per-game-value');
+        updateSliderValue('win-percentage', 'win-percentage-value');
     });
 </script>
 </div>

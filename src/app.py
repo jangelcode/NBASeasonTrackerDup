@@ -22,7 +22,7 @@ def rankings():
     return render_template("rankings.html", table_html=table_html)
 
 #prediction page
-@app.route("/make-a-prediction")
+@app.route("/Simulate-the-Playoffs")
 def make_a_prediction():
     return render_template("prediction.html")
 
