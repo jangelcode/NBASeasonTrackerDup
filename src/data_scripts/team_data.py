@@ -38,7 +38,8 @@ def fill_database():
             'Points Scored': points_info['for'],
             'Points Allowed': points_info['against'],
             'Point Differential': points_info['for'] - points_info['against'],
-            'Points per Game': round(points_info['for'] / games_info['played'], 1),
+            'PPG': round(points_info['for'] / games_info['played'], 1),
+            'OPPG': round(points_info['against'] / games_info['played'], 1),
         }
         
         #add to dataframe
