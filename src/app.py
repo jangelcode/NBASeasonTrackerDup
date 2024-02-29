@@ -5,36 +5,36 @@ from sqlalchemy import create_engine
 app = Flask(__name__)
 
 fav_teams = {
-    "Hawks": "Atlanta Hawks",
-    "Celtics": "Boston Celtics",
-    "Nets": "Brooklyn Nets",
-    "Hornets": "Charlotte Hornets",
-    "Bulls": "Chicago Bulls",
-    "Cavaliers": "Cleveland Cavaliers",
-    "Mavericks": "Dallas Mavericks",
-    "Nuggets": "Denver Nuggets",
-    "Pistons": "Detroit Pistons",
-    "Warriors": "Golden State Warriors",
-    "Rockets": "Houston Rockets",
-    "Pacers": "Indiana Pacers",
-    "Clippers": "Los Angeles Clippers",
-    "Lakers": "Los Angeles Lakers",
-    "Grizzlies": "Memphis Grizzlies",
-    "Heat": "Miami Heat",
-    "Bucks": "Milwaukee Bucks",
-    "Timberwolves": "Minnesota Timberwolves",
-    "Pelicans": "New Orleans Pelicans",
-    "Knicks": "New York Knicks",
-    "Thunder": "Oklahoma City Thunder",
-    "Magic": "Orlando Magic",
-    "76ers": "Philadelphia 76ers",
-    "Suns": "Phoenix Suns",
-    "Trail Blazers": "Portland Trail Blazers",
-    "Kings": "Sacramento Kings",
-    "Spurs": "San Antonio Spurs",
-    "Raptors": "Toronto Raptors",
-    "Jazz": "Utah Jazz",
-    "Wizards": "Washington Wizards"
+    'HAWKS': 'Atlanta Hawks',
+    'CELTICS': 'Boston Celtics',
+    'NETS': 'Brooklyn Nets',
+    'HORNETS': 'Charlotte Hornets',
+    'BULLS': 'Chicago Bulls',
+    'CAVALIERS': 'Cleveland Cavaliers',
+    'MAVERICKS': 'Dallas Mavericks',
+    'NUGGETS': 'Denver Nuggets',
+    'PISTONS': 'Detroit Pistons',
+    'WARRIORS': 'Golden State Warriors',
+    'ROCKETS': 'Houston Rockets',
+    'PACERS': 'Indiana Pacers',
+    'CLIPPERS': 'Los Angeles Clippers',
+    'LAKERS': 'Los Angeles Lakers',
+    'GRIZZLIES': 'Memphis Grizzlies',
+    'HEAT': 'Miami Heat',
+    'BUCKS': 'Milwaukee Bucks',
+    'TIMBERWOLVES': 'Minnesota Timberwolves',
+    'PELICANS': 'New Orleans Pelicans',
+    'KNICKS': 'New York Knicks',
+    'THUNDER': 'Oklahoma City Thunder',
+    'MAGIC': 'Orlando Magic',
+    '76ERS': 'Philadelphia 76ers',
+    'SUNS': 'Phoenix Suns',
+    'TRAIL BLAZERS': 'Portland Trail Blazers',
+    'KINGS': 'Sacramento Kings',
+    'SPURS': 'San Antonio Spurs',
+    'RAPTORS': 'Toronto Raptors',
+    'JAZZ': 'Utah Jazz',
+    'WIZARDS': 'Washington Wizards'
 }
 
 #postgreSQL database URL
@@ -48,8 +48,8 @@ def home():
     team_info = ""
     error_message = ""
     if request.method == 'POST':
-        if request.form['favoriteTeam'] in fav_teams:
-            favorite_team = fav_teams[request.form['favoriteTeam']]
+        if request.form['favoriteTeam'].upper() in fav_teams:
+            favorite_team = fav_teams[request.form['favoriteTeam'].upper()]
             query = f"SELECT * FROM teams WHERE \"Team\"='{favorite_team}';"
             df = pd.read_sql(query, con=engine)
             if not df.empty:
