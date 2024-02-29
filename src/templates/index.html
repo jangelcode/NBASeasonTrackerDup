@@ -24,6 +24,23 @@
 
 <div class="container mt-3">
     <h2>Home</h2>
+    <!-- Add this block within the <div class="container mt-3">, after the form -->
+    {% if favorite_team %}
+    <div class="alert alert-success" role="alert">
+        Your favorite team is: {{ favorite_team }}
+    </div>
+    {% endif %}
+
+    <!-- Start of new form for NBA team input -->
+    <form method="POST" action="/">
+        <div class="form-group">
+            <label for="favoriteTeam">Please enter the name of your favorite NBA team to get information about them. Example: for the Chicago Bulls enter 'Bulls'</label>
+            <input type="text" class="form-control" id="favoriteTeam" name="favoriteTeam" aria-describedby="teamHelp">
+            <small id="teamHelp" class="form-text text-muted">We'll provide you with the latest info and stats for your favorite team.</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>    
+    <!-- End of form -->
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

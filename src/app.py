@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import pandas as pd
 from sqlalchemy import create_engine
 
@@ -9,9 +9,13 @@ database_url = "postgresql://pcvqvgmijraryx:26c43ba15b78faf8bbf3b162d8f743b9ec3d
 engine = create_engine(database_url)
 
 #render home page
-@app.route("/")
+@app.route('/', methods=['GET', 'POST'])
 def home():
-    return render_template("index.html")
+    favorite_team = ""
+    if request.method == 'POST':
+        favorite_team = request.form['favoriteTeam']
+    return render_template("index.html", favorite_team=favorite_team)
+
 
 #rankings page
 @app.route("/rankings")
