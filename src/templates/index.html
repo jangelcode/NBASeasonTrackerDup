@@ -45,7 +45,10 @@
     {% if favorite_team %}
     <div class="mt-3">
         <h3>Team Information:</h3>
-        <body>Your favorite team has been searched for {{ count_info|safe }} times</body>
+        <body>
+            <p>Your favorite team has been searched for {{ count_info|safe }} times.</p>
+            <p>If the playoffs started today, the {{ favorite_team }} would <b>make the playoffs.</b></p>
+        </body>
     </div>
     {% endif %}
 </div>
