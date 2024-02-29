@@ -55,7 +55,7 @@ def home():
             if not df.empty:
                 team_info = df.to_html(classes='table table-striped', index=False, justify='left')
         else:
-            error_message = "Invalid team name entered. Please try again."  # Set the error message if the team is not found
+            error_message = "Invalid team name entered. Please try again."
     return render_template("index.html", favorite_team=favorite_team, team_info=team_info, error_message=error_message)
 
 
