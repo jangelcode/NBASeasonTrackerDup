@@ -48,6 +48,8 @@
         <body>
             <p>Your favorite team has been searched for {{ count_info|safe }} times.</p>
             <p>If the playoffs started today, the {{ favorite_team }} would <b>make the playoffs.</b></p>
+            <p>The {{ favorite_team }} [won/lost] their last game against the [opposing team]: [score]</p>
+            <p>Their next matchup is against the [opposing team] on [date] at [time]</p>
         </body>
     </div>
     {% endif %}
