@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import pandas as pd
 from sqlalchemy import create_engine
+from data_scripts.add_count import add_count
 
 app = Flask(__name__)
 
@@ -47,16 +48,18 @@ def home():
     favorite_team = ""
     team_info = ""
     error_message = ""
+    count_info = 0
     if request.method == 'POST':
         if request.form['favoriteTeam'].upper() in fav_teams:
             favorite_team = fav_teams[request.form['favoriteTeam'].upper()]
+            count_info = add_count(favorite_team)
             query = f"SELECT * FROM teams WHERE \"Team\"='{favorite_team}';"
             df = pd.read_sql(query, con=engine)
             if not df.empty:
                 team_info = df.to_html(classes='table table-striped', index=False, justify='left')
         else:
             error_message = "Invalid team name entered. Please try again."
-    return render_template("index.html", favorite_team=favorite_team, team_info=team_info, error_message=error_message)
+    return render_template("index.html", favorite_team=favorite_team, team_info=team_info, error_message=error_message, count_info=count_info)
 
 
 #rankings page
