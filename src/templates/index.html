@@ -30,7 +30,6 @@
         Your favorite team is the: {{ favorite_team }}
     </div>
     {% endif %}
-
     <!-- Start of new form for NBA team input -->
     <form method="POST" action="/">
         <div class="form-group">
@@ -41,10 +40,10 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>    
     <!-- End of form -->
-    {% if team_info %}
+    {% if favorite_team %}
     <div class="mt-3">
         <h3>Team Information:</h3>
-        {{ team_info|safe }}
+        {{ favorite_team|safe }}
     </div>
     {% endif %}
 </div>
