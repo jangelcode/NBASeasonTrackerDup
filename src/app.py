@@ -46,15 +46,17 @@ engine = create_engine(database_url)
 def home():
     favorite_team = ""
     team_info = ""
+    error_message = ""
     if request.method == 'POST':
-        favorite_team = request.form['favoriteTeam']
-        favorite_team = fav_teams[favorite_team]
-        if favorite_team in fav_teams:
-            query = f'SELECT * FROM teams WHERE "Team"="{favorite_team}";'
+        if request.form['favoriteTeam'] in fav_teams:
+            favorite_team = fav_teams[request.form['favoriteTeam']]
+            query = f"SELECT * FROM teams WHERE \"Team\"='{favorite_team}';"
             df = pd.read_sql(query, con=engine)
             if not df.empty:
                 team_info = df.to_html(classes='table table-striped', index=False, justify='left')
-    return render_template("index.html", favorite_team=favorite_team, team_info=team_info)
+        else:
+            error_message = "Invalid team name entered. Please try again."  # Set the error message if the team is not found
+    return render_template("index.html", favorite_team=favorite_team, team_info=team_info, error_message=error_message)
 
 
 #rankings page
