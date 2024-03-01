@@ -3,6 +3,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 from data_scripts.add_count import add_count
 from data_scripts.playoff_status import get_playoff_status
+from data_scripts.next_game import get_next_game
 
 app = Flask(__name__)
 
@@ -50,16 +51,22 @@ def home():
     team_info = ""
     playoff_status = ""
     error_message = ""
+    date, time, timezone = "", "", ""
+    
     count_info = 0
     if request.method == 'POST':
         if request.form['favoriteTeam'].upper() in fav_teams:
             favorite_team = fav_teams[request.form['favoriteTeam'].upper()]
             count_info = add_count(favorite_team)
             playoff_status = get_playoff_status(favorite_team)
+            next_game = get_next_game(favorite_team)
+            date = next_game['Date']
+            time = next_game['Time']
+            timezone = next_game['Timezone']
         else:
             error_message = "Invalid team name entered. Please try again."
     return render_template("index.html", favorite_team=favorite_team, team_info=team_info, error_message=error_message, count_info=count_info, 
-                           playoff_status=playoff_status)
+                           playoff_status=playoff_status, date=date, time=time, timezone=timezone)
 
 
 #rankings page
