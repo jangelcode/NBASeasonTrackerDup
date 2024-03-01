@@ -14,7 +14,7 @@ def get_playoff_status(team_name):
         if seed <= 6:
             playoff_status = 'make the playoffs.'
         elif seed <= 10:
-            playoff_status = 'make the play-in.'
+            playoff_status = 'make the play-in tournament.'
         else: 
             playoff_status = 'miss the playoffs.'
     return playoff_status

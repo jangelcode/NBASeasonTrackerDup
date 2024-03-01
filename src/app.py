@@ -47,13 +47,10 @@ engine = create_engine(database_url)
 #render home page
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    favorite_team = ""
-    team_info = ""
-    playoff_status = ""
-    error_message = ""
-    date, time, timezone = "", "", ""
-    
+    favorite_team, team_info, playoff_status, error_message = "", "", "", ""
+    date, time, timezone, opponent = "", "", "", ""
     count_info = 0
+
     if request.method == 'POST':
         if request.form['favoriteTeam'].upper() in fav_teams:
             favorite_team = fav_teams[request.form['favoriteTeam'].upper()]
@@ -63,10 +60,11 @@ def home():
             date = next_game['Date']
             time = next_game['Time']
             timezone = next_game['Timezone']
+            opponent = next_game['Opponent']
         else:
             error_message = "Invalid team name entered. Please try again."
     return render_template("index.html", favorite_team=favorite_team, team_info=team_info, error_message=error_message, count_info=count_info, 
-                           playoff_status=playoff_status, date=date, time=time, timezone=timezone)
+                           playoff_status=playoff_status, date=date, time=time, timezone=timezone, opponent=opponent)
 
 
 #rankings page

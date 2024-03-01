@@ -55,6 +55,10 @@ def get_next_game(team_name):
             'Time': data['response'][i]['time'][0:5],
             'Timezone': data['response'][i]['timezone'],
             }
+            if data['response'][i]['teams']['home']['name'] != team_name:
+                game_data['Opponent'] = data['response'][i]['teams']['home']['name']
+            else:
+                game_data['Opponent'] = data['response'][i]['teams']['away']['name']
             break
         
     return game_data
