@@ -46,10 +46,10 @@
     <div class="mt-3">
         <h3>Team Information:</h3>
         <body>
-            <p>Your favorite team has been searched for {{ count_info|safe }} times.</p>
+            <p>The <b>{{ favorite_team }}</b> have been searched for <b>{{ count_info|safe }}</b> times.</p>
             <p>If the playoffs started today, the {{ favorite_team }} would <b>{{ playoff_status }}</b></p>
-            <p>Their next matchup is against the {{ opponent }} on {{ date }} at {{ time }} {{ timezone }}</p>
-            <p>Their plus minus for the season is currently: {{ plusMinus }}</p>
+            <p>Their next matchup is against the <b>{{ opponent }}</b> on <b>{{ date }}</b> at <b>{{ time }} {{ timezone }}</b></p>
+            <p>Their plus minus for the season is currently <b>{{ plusMinus }}</b>. This gives them an average plus minus of <b>{{ avg_plusminus }}</b> per game.</p>
         </body>
     </div>
     {% endif %}

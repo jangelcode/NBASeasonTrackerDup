@@ -49,7 +49,7 @@ engine = create_engine(database_url)
 def home():
     favorite_team, team_info, playoff_status, error_message = "", "", "", ""
     date, time, timezone, opponent = "", "", "", ""
-    count_info, plusMinus = 0, 0
+    count_info, plusMinus, avg_plusminus = 0, 0, 0
 
     if request.method == 'POST':
         if request.form['favoriteTeam'].upper() in fav_teams:
@@ -61,13 +61,19 @@ def home():
             time = next_game['Time']
             timezone = next_game['Timezone']
             opponent = next_game['Opponent']
+            #query point differential
             query = f"SELECT \"Point Differential\" FROM teams WHERE \"Team\"='{favorite_team}';"
             ptdiff = pd.read_sql(query, con=engine)
             plusMinus = ptdiff.loc[0, 'Point Differential']
+            #query games played
+            query = f"SELECT \"Played\" FROM teams WHERE \"Team\"='{favorite_team}';"
+            played = pd.read_sql(query, con=engine)
+            total_played = played.loc[0, 'Played']
+            avg_plusminus = round(plusMinus / total_played, 1)
         else:
             error_message = "Invalid team name entered. Please try again."
     return render_template("index.html", favorite_team=favorite_team, team_info=team_info, error_message=error_message, count_info=count_info, 
-                           playoff_status=playoff_status, date=date, time=time, timezone=timezone, opponent=opponent, plusMinus=plusMinus)
+                           playoff_status=playoff_status, date=date, time=time, timezone=timezone, opponent=opponent, plusMinus=plusMinus, avg_plusminus=avg_plusminus)
 
 
 #rankings page
