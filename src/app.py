@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import pandas as pd
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from data_scripts.add_count import add_count
 from data_scripts.playoff_status import get_playoff_status
 from data_scripts.next_game import get_next_game
@@ -49,7 +49,7 @@ engine = create_engine(database_url)
 def home():
     favorite_team, team_info, playoff_status, error_message = "", "", "", ""
     date, time, timezone, opponent = "", "", "", ""
-    count_info = 0
+    count_info, plusMinus = 0, 0
 
     if request.method == 'POST':
         if request.form['favoriteTeam'].upper() in fav_teams:
@@ -61,10 +61,13 @@ def home():
             time = next_game['Time']
             timezone = next_game['Timezone']
             opponent = next_game['Opponent']
+            query = f"SELECT \"Point Differential\" FROM teams WHERE \"Team\"='{favorite_team}';"
+            ptdiff = pd.read_sql(query, con=engine)
+            plusMinus = ptdiff.loc[0, 'Point Differential']
         else:
             error_message = "Invalid team name entered. Please try again."
     return render_template("index.html", favorite_team=favorite_team, team_info=team_info, error_message=error_message, count_info=count_info, 
-                           playoff_status=playoff_status, date=date, time=time, timezone=timezone, opponent=opponent)
+                           playoff_status=playoff_status, date=date, time=time, timezone=timezone, opponent=opponent, plusMinus=plusMinus)
 
 
 #rankings page

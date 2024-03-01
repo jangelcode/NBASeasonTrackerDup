@@ -49,6 +49,7 @@
             <p>Your favorite team has been searched for {{ count_info|safe }} times.</p>
             <p>If the playoffs started today, the {{ favorite_team }} would <b>{{ playoff_status }}</b></p>
             <p>Their next matchup is against the {{ opponent }} on {{ date }} at {{ time }} {{ timezone }}</p>
+            <p>Their plus minus for the season is currently: {{ plusMinus }}</p>
         </body>
     </div>
     {% endif %}
