@@ -4,7 +4,7 @@ from unittest.mock import patch
 import team_data
 from sqlalchemy import create_engine, text
 
-class TestTeamDataIntegration(unittest.TestCase):
+class TeamDataIntegrationTest(unittest.TestCase):
 
     def setUp(self):
         self.database_url = "postgresql://pcvqvgmijraryx:26c43ba15b78faf8bbf3b162d8f743b9ec3d741cabd07856f210bd7b0fc82dd8@ec2-34-230-120-83.compute-1.amazonaws.com:5432/d2m4f9jdj48v0e"

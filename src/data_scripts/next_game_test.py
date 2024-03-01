@@ -18,8 +18,6 @@ mock_api_response = {
 def test_api_response(mock_get):
     #mock setup
     mock_get.return_value = MagicMock(status_code=200, json=lambda: mock_api_response)
-
-    #call function
     response = next_game.get_next_game_reponse('Boston Celtics')
 
     #compare API response
