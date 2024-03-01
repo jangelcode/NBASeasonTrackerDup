@@ -1,6 +1,4 @@
 import requests
-import pandas as pd
-from sqlalchemy import create_engine
 
 teams = {
     'Atlanta Hawks': 132,
@@ -65,4 +63,4 @@ def get_next_game(team_name):
                 game_data['Opponent'] = data['response'][i]['teams']['home']['name']
             else:
                 game_data['Opponent'] = data['response'][i]['teams']['away']['name']
-            break
+            return game_data
