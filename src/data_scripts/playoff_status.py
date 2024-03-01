@@ -1,5 +1,4 @@
 import pandas as pd
-import pandas as pd
 from sqlalchemy import create_engine
 
 def get_playoff_status(team_name):
