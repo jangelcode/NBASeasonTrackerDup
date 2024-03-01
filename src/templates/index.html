@@ -44,12 +44,12 @@
     </form>    
     {% if favorite_team %}
     <div class="mt-3">
-        <h3>Team Information:</h3>
+        <h3 style="margin-top: 35px;">Team Information:</h3>
         <body>
-            <p>The <b>{{ favorite_team }}</b> have been searched for <b>{{ count_info|safe }}</b> times.</p>
-            <p>If the playoffs started today, the {{ favorite_team }} would <b>{{ playoff_status }}</b></p>
-            <p>Their next matchup is against the <b>{{ opponent }}</b> on <b>{{ date }}</b> at <b>{{ time }} {{ timezone }}</b></p>
-            <p>Their plus minus for the season is currently <b>{{ plusMinus }}</b>. This gives them an average plus minus of <b>{{ avg_plusminus }}</b> per game.</p>
+            <p style="margin-top: 20px;">The <b>{{ favorite_team }}</b> have been searched for <b>{{ count_info|safe }}</b> times.</p>
+            <p style="margin-top: 20px;">If the playoffs started today, the {{ favorite_team }} would <b>{{ playoff_status }}</b></p>
+            <p style="margin-top: 20px;">Their next matchup is against the <b>{{ opponent }}</b> on <b>{{ date }}</b> at <b>{{ time }} {{ timezone }}</b></p>
+            <p style="margin-top: 20px;">Their plus minus for the season is currently <b>{{ plusMinus }}</b>. This gives them an average plus minus of <b>{{ avg_plusminus }}</b> per game.</p>
         </body>
     </div>
     {% endif %}
