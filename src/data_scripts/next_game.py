@@ -41,6 +41,8 @@ def get_next_game(team_name):
         "X-RapidAPI-Key": "02d9b0d232msh33e360bbdbbf28cp14fc09jsn2aaba1786409",
         "X-RapidAPI-Host": "api-basketball.p.rapidapi.com"
     }
+    if team_name not in teams:
+        return None
     
 
     for i in range(55, 86):
@@ -62,5 +64,3 @@ def get_next_game(team_name):
             break
         
     return game_data
-
-print(get_next_game('Atlanta Hawks')['Date'])
