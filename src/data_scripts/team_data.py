@@ -27,6 +27,7 @@ def get_team_data():
         
         #create dictionary
         row_data = {
+            #pull from data
             'Team': team_info['name'],
             'Conf. Standings': data['response'][0][0]['position'],
             'Conference': conference_info['name'],
@@ -36,6 +37,8 @@ def get_team_data():
             'Pct': games_info['win']['percentage'],
             'Points Scored': points_info['for'],
             'Points Allowed': points_info['against'],
+
+            #calculate other stats using provided data
             'Point Differential': points_info['for'] - points_info['against'],
             'PPG': round(points_info['for'] / games_info['played'], 1),
             'OPPG': round(points_info['against'] / games_info['played'], 1),
