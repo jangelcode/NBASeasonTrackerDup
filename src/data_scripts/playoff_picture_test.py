@@ -12,7 +12,7 @@ def test_get_teams_by_conference():
     western_standings = list(range(1, 16))
     western_teams = [f'Team {i}' for i in western_standings]
 
-    #create hypothetical dataframe with teams, conferences, and respective standings
+    #create sample dataframe with teams, conferences, and respective standings
     fake_df = pd.DataFrame({
         'Conference': eastern_conf + western_conf,
         'Conf. Standings': eastern_standings + western_standings,
