@@ -35,7 +35,7 @@ teams = {
     'Washington Wizards': 161
 }
 
-def get_next_game(team_name):
+def get_next_game_reponse(team_name):
     url = "https://api-basketball.p.rapidapi.com/games"
     headers = {
         "X-RapidAPI-Key": "02d9b0d232msh33e360bbdbbf28cp14fc09jsn2aaba1786409",
@@ -44,11 +44,15 @@ def get_next_game(team_name):
     if team_name not in teams:
         return None
     
+    querystring = {"season": "2023-2024", "league": "12", "team": str(teams[team_name])}
+    response = requests.get(url, headers=headers, params=querystring)
+    data = response.json()
+    return data
 
-    for i in range(55, 86):
-        querystring = {"season": "2023-2024", "league": "12", "team": str(teams[team_name])}
-        response = requests.get(url, headers=headers, params=querystring)
-        data = response.json()
+def get_next_game(team_name):
+    data = get_next_game_reponse(team_name)
+
+    for i in range(0, data['results']):
         if data['response'][i]['status']['short'] == "FT":
             continue
         elif data['response'][i]['status']['short'] == "NS":
@@ -62,5 +66,3 @@ def get_next_game(team_name):
             else:
                 game_data['Opponent'] = data['response'][i]['teams']['away']['name']
             break
-        
-    return game_data
