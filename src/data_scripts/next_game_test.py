@@ -1,8 +1,8 @@
 from unittest.mock import patch, MagicMock
 import pytest
-import next_game  # Replace with the name of your module
+import next_game
 
-# The specific API response you want to test
+#set api response for boston celtics
 mock_api_response = {
     "get": "games",
     "parameters": {
@@ -12,18 +12,17 @@ mock_api_response = {
     },
     "errors": [],
     "results": 86,
-    "response": '[] 86 items'
 }
 
 @patch('next_game.requests.get')
 def test_api_response(mock_get):
-    # Set up the mock to return your specific API response
+    #mock setup
     mock_get.return_value = MagicMock(status_code=200, json=lambda: mock_api_response)
 
-    # Call your function here. Replace 'your_function' with the actual function you're testing
-    response = next_game.get_next_game_reponse('Boston Celtics')  # Adjust this call to match your actual function's signature
+    #call function
+    response = next_game.get_next_game_reponse('Boston Celtics')
 
-    # Check that the function returns the expected API response
+    #compare API response
     assert response == mock_api_response
 
 if __name__ == "__main__":
