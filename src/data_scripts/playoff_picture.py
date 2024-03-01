@@ -10,10 +10,10 @@ def get_playoff_teams():
     df = pd.read_sql(query, con=engine)
     engine.dispose()
 
-    return get_conferences(df)
+    return get_teams_by_conference(df)
 
 
-def get_conferences(df):
+def get_teams_by_conference(df):
     playoff_picture_east = []
     playoff_picture_west = []
 
