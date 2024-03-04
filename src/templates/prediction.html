@@ -22,7 +22,7 @@
     </div>
 
 <div class="container mt-3">
-    <h2>Choose your weights below</h2>
+    <h2>Choose your weights below.</h2>
     <caption>How important is each stat to winning a championship?</caption>
     <form action="/Simulate-the-Playoffs" method="post">
         <div class="form-group">
@@ -37,7 +37,15 @@
         <div class="form-group">
             <label for="win-percentage">Win Percentage (0-10): <span id="win-percentage-value"></span></label>
             <input type="range" class="form-control-range" id="win-percentage" name="winPercentage" min="0" max="10">
-        </div>  
+        </div>
+        <div class="form-group">
+            <label for="oppg">Opponent Points Per Game (0-10): <span id="oppg-value"></span></label>
+            <input type="range" class="form-control-range" id="oppg" name="OPPG" min="0" max="10">
+        </div>
+        <div class="form-group">
+            <label for="confStandings">Standings (0-10): <span id="conf-standings-value"></span></label>
+            <input type="range" class="form-control-range" id="conf-standings" name="confStandings" min="0" max="10">
+        </div>
         <div class="form-group d-flex justify-content-end">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>            
@@ -67,6 +75,9 @@
         updateSliderValue('point-differential', 'point-differential-value');
         updateSliderValue('points-per-game', 'points-per-game-value');
         updateSliderValue('win-percentage', 'win-percentage-value');
+        updateSliderValue('oppg', 'oppg-value');
+        updateSliderValue('conf-standings', 'conf-standings-value');
+
     });
 </script>
 </div>
