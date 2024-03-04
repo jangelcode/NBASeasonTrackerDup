@@ -1,6 +1,16 @@
 import pandas as pd
 import pytest
-from playoff_picture import get_teams_by_conference
+import sys
+import os
+
+# Calculate the path to the src directory and add it to sys.path
+current_dir = os.path.dirname(__file__)
+parent_dir = os.path.join(current_dir, '..', '..')
+src_path = os.path.join(parent_dir, 'src')
+sys.path.append(src_path)
+
+# Now you can import next_game as if it were directly accessible
+from data_scripts.playoff_picture import get_teams_by_conference
 
 
 def test_get_teams_by_conference():

@@ -1,8 +1,18 @@
 import unittest
 import pandas as pd
-import pytest
 from sqlalchemy import create_engine
-from playoff_status import get_playoff_status
+import pytest
+import sys
+import os
+
+# Calculate the path to the src directory and add it to sys.path
+current_dir = os.path.dirname(__file__)
+parent_dir = os.path.join(current_dir, '..', '..')
+src_path = os.path.join(parent_dir, 'src')
+sys.path.append(src_path)
+
+# Now you can import next_game as if it were directly accessible
+from data_scripts.playoff_status import get_playoff_status
 
 class PlayoffStatusTest(unittest.TestCase):
     database_url = "postgresql://pcvqvgmijraryx:26c43ba15b78faf8bbf3b162d8f743b9ec3d741cabd07856f210bd7b0fc82dd8@ec2-34-230-120-83.compute-1.amazonaws.com:5432/d2m4f9jdj48v0e"

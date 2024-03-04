@@ -1,9 +1,23 @@
 import pytest
 from unittest.mock import MagicMock, patch
-from add_count import init_count, add_count
+import sys
+import os
+
+# Calculate the path to the src directory and add it to sys.path
+current_dir = os.path.dirname(__file__)
+parent_dir = os.path.join(current_dir, '..', '..')
+src_path = os.path.join(parent_dir, 'src')
+sys.path.append(src_path)
+
+# Now you can import next_game as if it were directly accessible
+from data_scripts.add_count import init_count
+import warnings
+
+warnings.filterwarnings("ignore", message="pandas only supports SQLAlchemy connectable")
+
 
 #unit test with mock objects for init_count
-@patch('add_count.create_engine')
+@patch('data_scripts.add_count.create_engine')
 def test_init_count(mock_create_engine):
     mock_engine = MagicMock()
     mock_create_engine.return_value = mock_engine
