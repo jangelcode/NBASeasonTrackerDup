@@ -22,24 +22,35 @@
     </div>
 
 <div class="container mt-3">
-    <h2>Make a Prediction</h2>
-    <form action="/submit-prediction" method="post">
+    <h2>Choose your weights below</h2>
+    <caption>How important is each stat to winning a championship?</caption>
+    <form action="/Simulate-the-Playoffs" method="post">
         <div class="form-group">
+            <p style="margin-top: 35px;"></p>
             <label for="point-differential">Point Differential (0-10): <span id="point-differential-value"></span></label>
-            <input type="range" class="form-control-range" id="point-differential" name="point_differential" min="0" max="10">
+            <input type="range" class="form-control-range" id="point-differential" name="pointDifferential" min="0" max="10">
         </div>
         <div class="form-group">
             <label for="points-per-game">Points Per Game (0-10): <span id="points-per-game-value"></span></label>
-            <input type="range" class="form-control-range" id="points-per-game" name="points_per_game" min="0" max="10">
+            <input type="range" class="form-control-range" id="points-per-game" name="pointsPerGame" min="0" max="10">
         </div>
         <div class="form-group">
             <label for="win-percentage">Win Percentage (0-10): <span id="win-percentage-value"></span></label>
-            <input type="range" class="form-control-range" id="win-percentage" name="points_allowed_per_game" min="0" max="10">
+            <input type="range" class="form-control-range" id="win-percentage" name="winPercentage" min="0" max="10">
         </div>  
         <div class="form-group d-flex justify-content-end">
             <button type="submit" class="btn btn-primary">Submit</button>
-        </div>             
+        </div>            
     </form>
+    {% if winner_prediction %}
+    <div class="container mt-3">
+        <h3 style="margin-top: 35px;">Winner:</h3>
+        <body>
+            <p>{{ winner_prediction }}</p>
+            <div>{{ winner_table|safe }}</div>
+        </body>
+    </div>
+    {% endif %}
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {

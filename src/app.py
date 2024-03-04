@@ -4,6 +4,7 @@ from sqlalchemy import create_engine, text
 from data_scripts.add_count import add_count
 from data_scripts.playoff_status import get_playoff_status
 from data_scripts.next_game import get_next_game
+from data_scripts.simulate_playoffs import predict_winner
 
 app = Flask(__name__)
 
@@ -84,10 +85,17 @@ def rankings():
     table_html = df.to_html(classes='table table-striped', index=False, justify='left')
     return render_template("rankings.html", table_html=table_html)
 
-#prediction page
-@app.route("/Simulate-the-Playoffs")
+
+@app.route("/Simulate-the-Playoffs", methods=['GET', 'POST'])
 def make_a_prediction():
+    if request.method == 'POST':
+        # Call predict_winner to get the prediction
+        winner_prediction = predict_winner()[0]
+        winner_table = predict_winner()[1].to_html(classes='table table-striped', index=False, justify='left')
+        # Pass the prediction to the template to display it
+        return render_template("prediction.html", winner_prediction=winner_prediction, winner_table=winner_table)
     return render_template("prediction.html")
+
 
 
 if __name__ == "__main__":

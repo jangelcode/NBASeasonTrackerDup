@@ -19,6 +19,7 @@ def get_team_data():
         response = requests.get(url, headers=headers, params=querystring)
         data = response.json()
 
+
         #extract data from response categories
         team_info = data['response'][0][0]['team']
         conference_info = data['response'][0][0]['group']
@@ -53,5 +54,6 @@ def get_team_data():
     engine = create_engine(database_url)
     all_data.to_sql('teams', con=engine, index=False, if_exists='replace')
     engine.dispose()
+    return all_data
 
 get_team_data()
