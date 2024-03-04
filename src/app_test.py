@@ -1,22 +1,18 @@
-import unittest
-from app import app
+import pytest
+from app import app  # Ensure this correctly imports your Flask app instance
 
-class TestFlaskApp(unittest.TestCase):
+@pytest.fixture
+def client():
+    app.config['TESTING'] = True
+    with app.test_client() as client:
+        yield client
 
-    def setUp(self):
-        #create client
-        self.app = app.test_client()
-        #set testing mode
-        app.config['TESTING'] = True
-
-    def test_main_route(self):
-        response = self.app.get('/')
-
-        #check status code is 200
-        self.assertEqual(response.status_code, 200)
-
-        self.assertIn(b'<h2>Home</h2>', response.data)
+def test_main_route(client):
+    """Test the main route to ensure it returns a status code of 200 and contains the expected content."""
+    response = client.get('/')
+    assert response.status_code == 200
+    assert b'<h2>Home</h2>' in response.data
 
 if __name__ == '__main__':
-    unittest.main()
+    pytest.main()
 

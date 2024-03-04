@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import pandas as pd
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine
 from data_scripts.add_count import add_count
 from data_scripts.playoff_status import get_playoff_status
 from data_scripts.next_game import get_next_game
@@ -8,7 +8,7 @@ from data_scripts.simulate_playoffs import predict_winner
 
 app = Flask(__name__)
 
-fav_teams = {
+teams = {
     'HAWKS': 'Atlanta Hawks',
     'CELTICS': 'Boston Celtics',
     'NETS': 'Brooklyn Nets',
@@ -53,8 +53,8 @@ def home():
     count_info, plusMinus, avg_plusminus = 0, 0, 0
 
     if request.method == 'POST':
-        if request.form['favoriteTeam'].upper() in fav_teams:
-            favorite_team = fav_teams[request.form['favoriteTeam'].upper()]
+        if request.form['favoriteTeam'].upper() in teams:
+            favorite_team = teams[request.form['favoriteTeam'].upper()]
             count_info = add_count(favorite_team)
             playoff_status = get_playoff_status(favorite_team)
             next_game = get_next_game(favorite_team)
