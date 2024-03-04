@@ -1,5 +1,4 @@
 import pytest
-from unittest.mock import MagicMock, patch
 import sys
 import os
 
@@ -9,22 +8,20 @@ parent_dir = os.path.join(current_dir, '..', '..')
 src_path = os.path.join(parent_dir, 'src')
 sys.path.append(src_path)
 
-# Now you can import next_game as if it were directly accessible
 from data_scripts.add_count import init_count
 import warnings
 
 warnings.filterwarnings("ignore", message="pandas only supports SQLAlchemy connectable")
 
-
-#unit test with mock objects for init_count
-@patch('data_scripts.add_count.create_engine')
-def test_init_count(mock_create_engine):
-    mock_engine = MagicMock()
+# Use the mocker fixture provided by pytest-mock
+def test_init_count(mocker):
+    mock_create_engine = mocker.patch('data_scripts.add_count.create_engine')
+    mock_engine = mocker.MagicMock()
     mock_create_engine.return_value = mock_engine
-    
-    #mock database writing
-    mock_engine.execute = MagicMock()
-    mock_engine.dispose = MagicMock()
+
+    # Mock database writing
+    mock_engine.execute = mocker.MagicMock()
+    mock_engine.dispose = mocker.MagicMock()
 
     df = init_count()
     

@@ -1,4 +1,3 @@
-from unittest.mock import patch, MagicMock
 import pytest
 import sys
 import os
@@ -11,8 +10,6 @@ sys.path.append(src_path)
 
 # Now you can import next_game as if it were directly accessible
 from data_scripts.next_game import get_next_game_reponse
-
-# Your test code goes here
 
 
 #set api response for boston celtics
@@ -27,13 +24,15 @@ mock_api_response = {
     "results": 86,
 }
 
-@patch('data_scripts.next_game.requests.get')
-def test_api_response(mock_get):
-    #mock setup
-    mock_get.return_value = MagicMock(status_code=200, json=lambda: mock_api_response)
+def test_api_response(mocker):
+    # Mock setup
+    mock_get = mocker.patch('data_scripts.next_game.requests.get')
+    mock_get.return_value.json.return_value = mock_api_response
+    mock_get.return_value.status_code = 200
+    
     response = get_next_game_reponse('Boston Celtics')
 
-    #compare API response
+    # Compare API response
     assert response == mock_api_response
 
 if __name__ == "__main__":
