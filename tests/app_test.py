@@ -8,7 +8,6 @@ sys.path.insert(0, src_path)
 
 from app import app
 
-
 @pytest.fixture
 def client():
     app.config['TESTING'] = True
