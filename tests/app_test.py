@@ -1,5 +1,13 @@
 import pytest
-from app import app  # Ensure this correctly imports your Flask app instance
+import sys
+import os
+
+# Adjust the sys.path to include the src directory directly
+src_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src'))
+sys.path.insert(0, src_path)
+
+from app import app
+
 
 @pytest.fixture
 def client():
