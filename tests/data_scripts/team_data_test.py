@@ -9,7 +9,7 @@ parent_dir = os.path.join(current_dir, '..', '..')
 src_path = os.path.join(parent_dir, 'src')
 sys.path.append(src_path)
 
-from data_scripts.team_data import fetch_team_data, extract_team_info, aggregate_team_data, store_team_data
+from data_scripts.team_data import fetch_team_data, store_team_data
 
 #mock the requests.get function to test api response
 def test_fetch_team_data(mocker):
