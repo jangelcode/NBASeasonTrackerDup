@@ -13,11 +13,29 @@ def client():
     with app.test_client() as client:
         yield client
 
-def test_main_route(client):
-    """Test the main route to ensure it returns a status code of 200 and contains the expected content."""
-    response = client.get('/')
+def test_team_selection_and_display(client):
+    response = client.post('/', data={'favoriteTeam': 'HAWKS'})
     assert response.status_code == 200
-    assert b'<h2>Home</h2>' in response.data
+    assert b'Atlanta Hawks' in response.data
+
+def test_rankings_page(client):
+    response = client.get('/rankings')
+    assert response.status_code == 200
+    assert b'table table-striped' in response.data
+
+def test_playoff_prediction(client):
+    form_data = {
+        'pointDifferential': '8',
+        'pointsPerGame': '8',
+        'winPercentage': '6',
+        'OPPG': '7',
+        'confStandings': '6'
+    }
+    response = client.post("/Simulate-the-Playoffs", data=form_data)
+    assert response.status_code == 200
+    assert b"Winner:" in response.data
+
+
 
 if __name__ == '__main__':
     pytest.main()
