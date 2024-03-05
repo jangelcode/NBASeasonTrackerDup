@@ -2,13 +2,11 @@ import pytest
 import sys
 import os
 
-# Calculate the path to the src directory and add it to sys.path
 current_dir = os.path.dirname(__file__)
 parent_dir = os.path.join(current_dir, '..', '..')
 src_path = os.path.join(parent_dir, 'src')
 sys.path.append(src_path)
 
-# Now you can import next_game as if it were directly accessible
 from data_scripts.next_game import get_next_game_reponse
 
 
@@ -25,14 +23,14 @@ mock_api_response = {
 }
 
 def test_api_response(mocker):
-    # Mock setup
+    #mock api response
     mock_get = mocker.patch('data_scripts.next_game.requests.get')
     mock_get.return_value.json.return_value = mock_api_response
     mock_get.return_value.status_code = 200
     
     response = get_next_game_reponse('Boston Celtics')
 
-    # Compare API response
+    #compare API response
     assert response == mock_api_response
 
 if __name__ == "__main__":

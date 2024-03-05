@@ -1,5 +1,6 @@
 import requests
 
+#maps teams with their ids defined by the api
 teams = {
     'Atlanta Hawks': 132,
     'Boston Celtics': 133,
@@ -33,6 +34,7 @@ teams = {
     'Washington Wizards': 161
 }
 
+#get the api response for the corresponding team
 def get_next_game_reponse(team_name):
     url = "https://api-basketball.p.rapidapi.com/games"
     headers = {
@@ -47,6 +49,7 @@ def get_next_game_reponse(team_name):
     data = response.json()
     return data
 
+#sort through games until we see one hasn't started yet, that's the next game
 def get_next_game(team_name):
     data = get_next_game_reponse(team_name)
 

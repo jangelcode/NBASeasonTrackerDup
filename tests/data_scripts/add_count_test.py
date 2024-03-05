@@ -2,7 +2,6 @@ import pytest
 import sys
 import os
 
-# Calculate the path to the src directory and add it to sys.path
 current_dir = os.path.dirname(__file__)
 parent_dir = os.path.join(current_dir, '..', '..')
 src_path = os.path.join(parent_dir, 'src')
@@ -13,13 +12,13 @@ import warnings
 
 warnings.filterwarnings("ignore", message="pandas only supports SQLAlchemy connectable")
 
-# Use the mocker fixture provided by pytest-mock
+#mock database connection
 def test_init_count(mocker):
     mock_create_engine = mocker.patch('data_scripts.add_count.create_engine')
     mock_engine = mocker.MagicMock()
     mock_create_engine.return_value = mock_engine
 
-    # Mock database writing
+    #mock database writing
     mock_engine.execute = mocker.MagicMock()
     mock_engine.dispose = mocker.MagicMock()
 

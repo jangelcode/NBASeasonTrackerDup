@@ -53,6 +53,7 @@ def home():
     count_info, plusMinus, avg_plusminus = 0, 0, 0
 
     if request.method == 'POST':
+        #if valid name entry
         if request.form['favoriteTeam'].upper() in teams:
             favorite_team = teams[request.form['favoriteTeam'].upper()]
             count_info = add_count(favorite_team)
@@ -82,6 +83,7 @@ def home():
 def rankings():
     query = 'SELECT * FROM teams ORDER BY "Pct" DESC;'
     df = pd.read_sql(query, con=engine)
+    #convert table
     table_html = df.to_html(classes='table table-striped', index=False, justify='left')
     return render_template("rankings.html", table_html=table_html)
 
@@ -89,10 +91,10 @@ def rankings():
 @app.route("/Simulate-the-Playoffs", methods=['GET', 'POST'])
 def make_a_prediction():
     if request.method == 'POST':
-        # Call predict_winner to get the prediction
+        #call predict_winner to get the prediction
         winner_prediction = predict_winner()[0]
         winner_table = predict_winner()[1].to_html(classes='table table-striped', index=False, justify='left')
-        # Pass the prediction to the template to display it
+        #pass the prediction to the template to display it
         return render_template("prediction.html", winner_prediction=winner_prediction, winner_table=winner_table)
     return render_template("prediction.html")
 
