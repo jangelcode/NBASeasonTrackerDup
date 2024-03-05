@@ -6,9 +6,9 @@ import pandas as pd
 def scale_data(series, invert=False):
     #scale data to a 0-10 range and invert if lower values are considered better
     if invert:
-        scaled_series = (1 - (series - series.min()) / (series.max() - series.min())) * 10
+        scaled_series = (1 - (series - series.min()) / (series.max() - series.min()))
     else:
-        scaled_series = ((series - series.min()) / (series.max() - series.min())) * 10
+        scaled_series = ((series - series.min()) / (series.max() - series.min()))
     return scaled_series
 
 
@@ -34,7 +34,6 @@ def get_playoff_data():
 
 
 def calculate_team_scores(team_data, weights):
-    """Calculate weighted scores for each team based on scaled team data and weights."""
     #scale team statistics
     team_data['Point Differential'] = scale_data(team_data['Point Differential'])
     team_data['PPG'] = scale_data(team_data['PPG'])
@@ -49,6 +48,14 @@ def calculate_team_scores(team_data, weights):
                                (team_data['Pct'] * win_pct_weight) + 
                                (team_data['OPPG'] * oppg_pct_weight) +
                                (team_data['Conf. Standings'] * standings_pct_weight), 2)
+    max_score = (point_diff_weight + ppg_weight + win_pct_weight + oppg_pct_weight + standings_pct_weight)
+
+    #make sure at least one slider is nonzero
+    if max_score > 0:
+        team_data['Score'] = round((team_data['Score'] / max_score) * 100, 2)
+    else:
+        team_data['Score'] = 0
+
     return team_data
 
 #use functions to identify highest score (winner)
