@@ -1,11 +1,11 @@
 from flask import Flask, render_template, request
 import pandas as pd
 from sqlalchemy import create_engine
+# from data_scripts.database import get_database_URI
 from data_scripts.add_count import add_count
 from data_scripts.playoff_status import get_playoff_status
 from data_scripts.next_game import get_next_game
 from data_scripts.simulate_playoffs import predict_winner
-from data_scripts.database import get_database_URI
 
 app = Flask(__name__)
 
@@ -43,7 +43,7 @@ teams = {
 }
 
 #postgreSQL database URL
-database_url = get_database_URI()
+database_url = "postgresql://fizcsntuttpigc:01594c15291a6eeaba874716fa449c578d303f263b94082efcce5c29ecbaf579@ec2-18-204-162-101.compute-1.amazonaws.com:5432/dbmcmt26draeuq"
 engine = create_engine(database_url)
 
 #render home page

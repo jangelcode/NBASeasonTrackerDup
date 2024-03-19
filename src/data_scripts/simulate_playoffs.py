@@ -1,7 +1,7 @@
 from flask import request
 from sqlalchemy import create_engine
 import pandas as pd
-from database import get_database_URI
+# from database import get_database_URI
 
 
 def scale_data(series, invert=False):
@@ -26,7 +26,7 @@ def get_playoff_weights():
 
 def get_playoff_data():
     #load team data
-    database_url = get_database_URI()
+    database_url = "postgresql://fizcsntuttpigc:01594c15291a6eeaba874716fa449c578d303f263b94082efcce5c29ecbaf579@ec2-18-204-162-101.compute-1.amazonaws.com:5432/dbmcmt26draeuq"
     engine = create_engine(database_url)
     query = f'SELECT "Team", "Point Differential", "PPG", "Pct", "OPPG", "Conf. Standings" FROM teams;'
     team_data = pd.read_sql(query, con=engine)
