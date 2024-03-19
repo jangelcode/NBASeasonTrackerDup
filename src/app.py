@@ -5,6 +5,7 @@ from data_scripts.add_count import add_count
 from data_scripts.playoff_status import get_playoff_status
 from data_scripts.next_game import get_next_game
 from data_scripts.simulate_playoffs import predict_winner
+from data_scripts.database import get_database_URI
 
 app = Flask(__name__)
 
@@ -42,7 +43,7 @@ teams = {
 }
 
 #postgreSQL database URL
-database_url = "postgresql://pcvqvgmijraryx:26c43ba15b78faf8bbf3b162d8f743b9ec3d741cabd07856f210bd7b0fc82dd8@ec2-34-230-120-83.compute-1.amazonaws.com:5432/d2m4f9jdj48v0e"
+database_url = get_database_URI()
 engine = create_engine(database_url)
 
 #render home page
