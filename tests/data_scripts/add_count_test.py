@@ -25,7 +25,7 @@ def test_init_count(mocker):
     df = init_count()
     
     #verify database URL
-    mock_create_engine.assert_called_with("postgresql://pcvqvgmijraryx:26c43ba15b78faf8bbf3b162d8f743b9ec3d741cabd07856f210bd7b0fc82dd8@ec2-34-230-120-83.compute-1.amazonaws.com:5432/d2m4f9jdj48v0e")
+    mock_create_engine.assert_called_with("postgresql://fizcsntuttpigc:01594c15291a6eeaba874716fa449c578d303f263b94082efcce5c29ecbaf579@ec2-18-204-162-101.compute-1.amazonaws.com:5432/dbmcmt26draeuq")
     
     #verify counts are all set to 0
     assert (df["Count"] == 0).all()
