@@ -1,2 +1,2 @@
 def get_database_URI():
-    return "postgresql://ybtkcllztqfqyd:116d3ca130937876967aacaf20a5605ea8d897f439e9483d7400de9c33e7e5de@ec2-54-211-177-159.compute-1.amazonaws.com:5432/d8slqg8r27dohv"
+    return "postgresql://fizcsntuttpigc:01594c15291a6eeaba874716fa449c578d303f263b94082efcce5c29ecbaf579@ec2-18-204-162-101.compute-1.amazonaws.com:5432/dbmcmt26draeuq"
