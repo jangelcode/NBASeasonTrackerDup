@@ -5,10 +5,10 @@ from sqlalchemy import create_engine
 
 #connect to api and return response data
 def fetch_team_data(team_id):
-    url = "https://api-basketball.p.rapidapi.com/standings"
+    url = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     headers = {
-        "X-RapidAPI-Key": "02d9b0d232msh33e360bbdbbf28cp14fc09jsn2aaba1786409",
-        "X-RapidAPI-Host": "api-basketball.p.rapidapi.com"
+        "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx": "api-basketball.p.rapidapi.com"
     }
     querystring = {"season": "2023-2024", "league": "12", "team": str(team_id)}
     response = requests.get(url, headers=headers, params=querystring)
@@ -60,7 +60,7 @@ def aggregate_team_data():
 
 #push all the team data to postgres
 def store_team_data(data_frame):
-    database_url = "postgresql://fizcsntuttpigc:01594c15291a6eeaba874716fa449c578d303f263b94082efcce5c29ecbaf579@ec2-18-204-162-101.compute-1.amazonaws.com:5432/dbmcmt26draeuq"
+    database_url = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     engine = create_engine(database_url)
     data_frame.to_sql('teams', con=engine, index=False, if_exists='replace')
     engine.dispose()
