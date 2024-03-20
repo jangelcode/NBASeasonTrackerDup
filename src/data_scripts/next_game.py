@@ -36,10 +36,10 @@ teams = {
 
 #get the api response for the corresponding team
 def get_next_game_reponse(team_name):
-    url = "https://api-basketball.p.rapidapi.com/games"
+    url = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     headers = {
-        "X-RapidAPI-Key": "02d9b0d232msh33e360bbdbbf28cp14fc09jsn2aaba1786409",
-        "X-RapidAPI-Host": "api-basketball.p.rapidapi.com"
+        "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx": "api-basketball.p.rapidapi.com"
     }
     if team_name not in teams:
         return None
