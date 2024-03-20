@@ -26,7 +26,7 @@ def get_playoff_weights():
 
 def get_playoff_data():
     #load team data
-    database_url = "postgresql://fizcsntuttpigc:01594c15291a6eeaba874716fa449c578d303f263b94082efcce5c29ecbaf579@ec2-18-204-162-101.compute-1.amazonaws.com:5432/dbmcmt26draeuq"
+    database_url = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     engine = create_engine(database_url)
     query = f'SELECT "Team", "Point Differential", "PPG", "Pct", "OPPG", "Conf. Standings" FROM teams;'
     team_data = pd.read_sql(query, con=engine)
