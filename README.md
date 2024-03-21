@@ -12,14 +12,14 @@ The NBA Season Tracker is currently being hosted on Heroku and is accessible at 
 - **Playoff Status:** Real-time analysis of teams' playoff prospects, demonstrating complex logic implementation.
 - **Next Game Schedule:** Integration with external APIs to display upcoming games, highlighting API usage and data presentation.
 - **Team Rankings:** Dynamic rankings based on live data, emphasizing backend to frontend data flow.
-- **Simulate Playoffs:** A custom-built simulation feature to predict playoff outcomes, showcasing algorithm development and statistical analysis.
+- **Simulate Playoffs:** A custom-built simulation feature to provide weighted championship predictions.
 
 ## Tech Stack
 
 - **Frontend:** HTML, CSS (Bootstrap) for responsive design and user interface.
-- **Backend:** Flask (Python) for server-side logic, API integration, and routing.
+- **Backend:** Flask, Python for server-side logic, API integration, and routing.
 - **Database:** PostgreSQL for data storage and management, demonstrating SQL skills.
-- **Deployment:** Heroku for hosting the web application, showcasing knowledge in cloud-based deployment.
+- **Deployment:** Heroku for cloud deployment with continuous integration, automated testing, task scheduling, and hosting the web application.
 - **Monitoring:** Librato for real-time monitoring of application performance and health.
 
 ## Running the Application
