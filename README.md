@@ -4,7 +4,7 @@ Welcome to the NBA Season Tracker, a Flask-based web application designed to sho
 
 ## About This Project
 
-Inspired by my love of basketball, this project allows basketball fans to quickly retrieve team statistics, see their team ranked by point differential, and play around with weights for team stats and produce a table of rankings based on the user input. The NBA Season Tracker is currently being hosted on Heroku and is actively accessible and updated.
+Inspired by my love for basketball, this project allows fans to quickly retrieve team statistics, see their team ranked by point differential, see which teams score the highest based on weighted categories provided by the user. The NBA Season Tracker is currently being hosted on Heroku and is actively accessible and updated.
 
 ## Features
 
