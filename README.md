@@ -1,6 +1,6 @@
-# NBAWebApp
+# NBA Season Tracker
 
-Welcome to NBAWebApp, a Flask-based web application designed for NBA enthusiasts. This app provides real-time information and statistics for NBA teams, along with features like playoff status checks, next game schedules, team rankings, and a playoff outcome simulator.
+Welcome to NBAWebApp, a Flask-based web application designed for NBA enthusiasts. This app provides real-time information and statistics for NBA teams, along with features like playoff status checks, next game schedules, team rankings, and a weighted championship simulator.
 
 ## Features
 
