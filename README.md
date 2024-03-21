@@ -6,8 +6,6 @@ Welcome to the NBA Season Tracker, a Flask-based web application designed to sho
 
 The NBA Season Tracker is currently being hosted on Heroku and is accessible at [https://nbawebapp-prod-8d3ec9ee7b0e.herokuapp.com/](https://nbawebapp-prod-8d3ec9ee7b0e.herokuapp.com/). The application is monitored using Librato to ensure performance and uptime.
 
-This project was created as a platform to demonstrate my abilities in developing full-stack web applications, working with databases, and implementing API integration. It serves as a practical example of my technical skills for prospective employers or anyone interested in my work.
-
 ## Features
 
 - **Team Information:** Detailed statistics and insights for every NBA team, showcasing data fetching and processing capabilities.
