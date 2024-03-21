@@ -1,18 +1,37 @@
 # NBA Season Tracker
 
-Welcome to NBAWebApp, a Flask-based web application designed for NBA enthusiasts. This app provides real-time information and statistics for NBA teams, along with features like playoff status checks, next game schedules, team rankings, and a weighted championship simulator.
+Welcome to the NBA Season Tracker, a Flask-based web application designed to showcase my web development and data analysis skills. This application provides real-time information and statistics for NBA teams, leveraging Python, Flask, PostgreSQL, and integrating with NBA-related APIs.
+
+## About This Project
+
+The NBA Season Tracker is currently being hosted on Heroku and is accessible at [https://nbawebapp-prod-8d3ec9ee7b0e.herokuapp.com/](https://nbawebapp-prod-8d3ec9ee7b0e.herokuapp.com/). The application is monitored using Librato to ensure performance and uptime.
+
+This project was created as a platform to demonstrate my abilities in developing full-stack web applications, working with databases, and implementing API integration. It serves as a practical example of my technical skills for prospective employers or anyone interested in my work.
 
 ## Features
 
-- **Team Information:** Access detailed statistics and information about any NBA team, including performance metrics and standings.
-- **Playoff Status:** Check whether your favorite team is set to make the playoffs, participate in the play-in tournament, or miss the playoffs.
-- **Next Game Schedule:** Find out when your favorite team's next game is and who they will be playing against.
-- **Team Rankings:** View current NBA team rankings based on win-loss records.
-- **Simulate Playoffs:** Utilize our simulation tool to predict the outcome of the playoffs using current team data.
+- **Team Information:** Detailed statistics and insights for every NBA team, showcasing data fetching and processing capabilities.
+- **Playoff Status:** Real-time analysis of teams' playoff prospects, demonstrating complex logic implementation.
+- **Next Game Schedule:** Integration with external APIs to display upcoming games, highlighting API usage and data presentation.
+- **Team Rankings:** Dynamic rankings based on live data, emphasizing backend to frontend data flow.
+- **Simulate Playoffs:** A custom-built simulation feature to predict playoff outcomes, showcasing algorithm development and statistical analysis.
 
 ## Tech Stack
 
-- **Frontend:** HTML, Bootstrap
-- **Backend:** Flask
-- **Database:** PostgreSQL
-- **APIs:** External NBA-related APIs for fetching real-time data
+- **Frontend:** HTML, CSS (Bootstrap) for responsive design and user interface.
+- **Backend:** Flask (Python) for server-side logic, API integration, and routing.
+- **Database:** PostgreSQL for data storage and management, demonstrating SQL skills.
+- **Deployment:** Heroku for hosting the web application, showcasing knowledge in cloud-based deployment.
+- **Monitoring:** Librato for real-time monitoring of application performance and health.
+
+## Running the Application
+
+This project is designed to be viewed as a demonstration of my abilities. While contributions or forks are welcome, the primary intent is for it to serve as a portfolio piece.
+
+Feel free to explore the live application at [https://nbawebapp-prod-8d3ec9ee7b0e.herokuapp.com/](https://nbawebapp-prod-8d3ec9ee7b0e.herokuapp.com/).
+
+## License
+
+This project is open-sourced under the MIT License.
+
+
