@@ -24,7 +24,7 @@ Inspired by my love for basketball, this project allows fans to quickly retrieve
 
 ## Running the Application
 
-Feel free to explore the live application at [https://nbawebapp-prod-8d3ec9ee7b0e.herokuapp.com/](https://nbawebapp-prod-8d3ec9ee7b0e.herokuapp.com/).
+Feel free to explore the live application at (inactive).
 
 ## License
 
