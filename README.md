@@ -1,6 +1,6 @@
 # NBA Season Tracker
 
-Welcome to the NBA Season Tracker, a Flask-based web application designed to showcase my web development and data analysis skills. This application provides real-time information and statistics for NBA teams, leveraging Python, Flask, PostgreSQL, and integrating with NBA-related APIs.
+Welcome to the NBA Season Tracker, a Flask-based web application designed to provide real-time information and statistics for NBA teams.
 
 ## About This Project
 
@@ -8,17 +8,17 @@ Inspired by my love for basketball, this project allows fans to quickly retrieve
 
 ## Features
 
-- **Team Information:** Detailed statistics and insights for every NBA team, showcasing data fetching and processing capabilities.
-- **Playoff Status:** Real-time analysis of teams' playoff prospects, demonstrating complex logic implementation.
-- **Next Game Schedule:** Integration with external APIs to display upcoming games, highlighting API usage and data presentation.
-- **Team Rankings:** Dynamic rankings based on live data, emphasizing backend to frontend data flow.
+- **Team Information:** Detailed statistics and insights for every NBA team.
+- **Playoff Status:** Real-time analysis of teams' playoff prospects.
+- **Next Game Schedule:** Integration with external APIs to display upcoming games.
+- **Team Rankings:** Dynamic rankings based on live data.
 - **Simulate Playoffs:** A custom-built simulation feature to provide weighted championship predictions.
 
 ## Tech Stack
 
 - **Frontend:** HTML, CSS (Bootstrap) for responsive design and user interface.
 - **Backend:** Flask, Python for server-side logic, API integration, and routing.
-- **Database:** PostgreSQL for data storage and management, demonstrating SQL skills.
+- **Database:** PostgreSQL for actively storing and managing data (updated hourly).
 - **Deployment:** Heroku for cloud deployment with continuous integration, automated testing, task scheduling, and hosting the web application.
 - **Monitoring:** Librato for real-time monitoring of application performance and health.
 
